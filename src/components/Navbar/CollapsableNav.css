@@ -1,0 +1,8 @@
+a.left-menu {
+  color: white;
+  font-size: larger;
+  text-decoration: none;
+}
+a:hover {
+  color: aqua;
+}
