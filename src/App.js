@@ -6,12 +6,14 @@ import Navbar from "./components/Navbar/Navbar";
 
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LogInPage";
-import WodsPage from "./pages/WodsPage";
+import WorkoutsPage from "./pages/WorkoutsPage";
+import ClientsPage from "./pages/ClientsPage";
 
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT
 import IsAnon from "./components/IsAnon";
 import CollapsableNav from "./components/Navbar/CollapsableNav";
 import { Home } from "grommet-icons";
+import AddClient from "./pages/AddClient";
 
 const theme = {
   notification: { container: { background: "brand" } },
@@ -28,26 +30,44 @@ export default function App() {
   return (
     <Grommet theme={theme}>
       {/* <Navbar /> */}
-      <Box wrap direction="row">
+      <Box direction="row">
+        <Box direction="column" background="brand" align="center">
+          <CollapsableNav />
+        </Box>
         <Box
           height="100vh"
-          direction="column"
-          background="brand"
+          overflow="auto"
           align="center"
-          justify="around"
+          flex
+          background="light-2"
         >
-          <CollapsableNav flex />
-        </Box>
-        <Box align="center" flex background="light-2">
           <Routes>
             <Route path="/" element={<HomePage />} />
 
             <Route
-              path="/wods"
+              path="/clients"
               element={
                 <IsPrivate>
                   {" "}
-                  <WodsPage />{" "}
+                  <ClientsPage />{" "}
+                </IsPrivate>
+              }
+            />
+            <Route
+              path="/workouts"
+              element={
+                <IsPrivate>
+                  {" "}
+                  <WorkoutsPage />{" "}
+                </IsPrivate>
+              }
+            />
+            <Route
+              path="/addclient"
+              element={
+                <IsPrivate>
+                  {" "}
+                  <AddClient />{" "}
                 </IsPrivate>
               }
             />

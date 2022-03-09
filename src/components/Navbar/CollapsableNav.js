@@ -33,17 +33,24 @@ const CollapsableNav = () => {
         />
       )}
 
-      <Nav direction="column" align="center" background="brand" pad="medium">
-        <Link className="left-menu" to="/">
-          <Home />
-          Home
-        </Link>
-
+      <Nav
+        height="100vh"
+        direction="column"
+        justify="center"
+        background="brand"
+        pad="medium"
+      >
         {isLoggedIn && (
           <>
-            {/* <Link color="white" to="/">
-            Wods
-          </Link> */}
+            <Link className="left-menu" to="/">
+              Home
+            </Link>
+            <Link className="left-menu" to="/workouts">
+              My Workouts
+            </Link>
+            <Link className="left-menu" to="/clients">
+              My Clients
+            </Link>
 
             {/*   UPDATE   */}
             <Button
