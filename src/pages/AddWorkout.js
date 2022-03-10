@@ -7,12 +7,16 @@ import {
     Heading,
     Form,
     FormField,
+    Notification,
     TextInput,
   } from "grommet";
   import { Add, Trash } from "grommet-icons";
   import React, { useState } from "react";
   
   export default function AddWorkout() {
+
+
+    const [visibleEdit, setVisibleEdit] = useState(false)
 
     const SW_API_URL = process.env.REACT_APP_API_URL;
 
@@ -21,6 +25,7 @@ import {
       name: "",
       description: "",
       workout: [{ move: "", reps: 0 }],
+      userAdded: true
     });
   
     const addMove = () => {
@@ -45,7 +50,11 @@ import {
     };
 
     const handleSubmit = (data) => {
+        data.userAdded = true
+
         console.log(data)
+
+        setVisibleEdit(true)
         
 
         axios
@@ -56,7 +65,8 @@ import {
                 description: "",
                 name: "", 
                 rounds: "",
-                workout: [{ move: "", reps: 0 }]
+                workout: [{ move: "", reps: 0 }],
+                userAdded: true
             })
         })
     }
@@ -95,7 +105,17 @@ import {
   
     return (
       <Box>
-        <Heading>Add Workout</Heading>
+        <Heading>Create a workout</Heading>
+
+        { visibleEdit && <Notification
+        container={{ background: { color: "background-front" } }}
+        toast={{ position: "top-right" }}
+        background="brand"
+        status="normal"
+        title="Status"
+        message="Your workout has been added"
+        onClose={() => setVisibleEdit(false)}
+      />}
   
         <Form
           value={values}
@@ -104,6 +124,7 @@ import {
               name: "",
               description: "",
               workout: [{ move: "", reps: "" }],
+              userAdded: true
             });
           }}
           onChange={handleFormChange}

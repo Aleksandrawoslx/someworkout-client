@@ -8,6 +8,7 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LogInPage";
 import WorkoutsPage from "./pages/WorkoutsPage";
 import ClientsPage from "./pages/ClientsPage";
+import EditClient from "./pages/EditClient"
 
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT
 import IsAnon from "./components/IsAnon";
@@ -77,6 +78,15 @@ export default function App() {
                 <IsPrivate>
                   {" "}
                   <AddClient />{" "}
+                </IsPrivate>
+              }
+            />
+               <Route
+              path="/clients/:clientId"
+              element={
+                <IsPrivate>
+                  {" "}
+                  <EditClient />{" "}
                 </IsPrivate>
               }
             />

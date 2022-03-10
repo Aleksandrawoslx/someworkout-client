@@ -92,7 +92,10 @@ function ClientsPage() {
                         {element.clientMeets.length}
                       </TableCell>
                       <TableCell scope="col" border="bottom">
-                        <FolderOpen />
+                        <Link to={`/clients/${element._id}`}>
+                        <FolderOpen/>
+                        </Link>
+                        
                       </TableCell>
                       <TableCell scope="col" border="bottom">
                         <Trash id={element._id} onClick={handleDelete} />

@@ -28,6 +28,7 @@ function HomePage() {
 
   useEffect(() => {
     axios.get(`${SW_API_URL}/api/users/${user._id}`).then((response) => {
+      
       setUserDetails(response.data);
     });
   }, []);
@@ -48,7 +49,10 @@ function HomePage() {
       })
       .then((response) => {
         console.log(response.data);
-        setWorkouts(response.data);
+        const filteredData = (response.data).filter(element => {
+          return element.userAdded === false
+        })
+        setWorkouts(filteredData);
       });
   }, []);
 

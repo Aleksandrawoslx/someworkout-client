@@ -46,11 +46,15 @@ const CollapsableNav = () => {
               Home
             </Link>
             <Link className="left-menu" to="/workouts">
-              My Workouts
+              My workouts
+            </Link>
+            <Link className="left-menu" to="/addworkout">
+              Make a workout 
             </Link>
             <Link className="left-menu" to="/clients">
               My Clients
             </Link>
+         
 
             {/*   UPDATE   */}
             <Button
