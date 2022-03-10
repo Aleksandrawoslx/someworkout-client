@@ -6,9 +6,3 @@ a.left-menu {
 a:hover {
   color: aqua;
 }
-
-* {
-  direction: flex;
-  justify-content: space-between;
-  position: relative;
-}
