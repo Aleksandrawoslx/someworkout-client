@@ -1,40 +1,77 @@
-import { Box, DateInput, Text, RangeSelector, Stack } from "grommet";
-import "../App.css";
-import { useState } from "react";
+import axios from "axios";
+import {
+  Box,
+  DateInput,
+  Text,
+  TextInput,
+  RangeSelector,
+  Stack,
+  Heading,
+} from "grommet";
+
+import Fuse from "fuse.js";
+
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../context/auth.context";
+import WodCard from "../components/WodCard";
 
 function HomePage() {
-  const [values, setValues] = useState([3, 7]);
-  return (
-    <div className="App">
-      <Stack>
-        <Box direction="row" justify="between">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((value) => (
-            <Box key={value} pad="small" border={false}>
-              <Text style={{ fontFamily: "monospace" }}>{value}</Text>
-            </Box>
-          ))}
-        </Box>
-        <RangeSelector
-          direction="horizontal"
-          invert={false}
-          min={0}
-          max={9}
-          size="full"
-          round="small"
-          values={values}
-          onChange={(values) => setValues(values)}
-        />
-      </Stack>
+  const [workouts, setWorkouts] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const SW_API_URL = process.env.REACT_APP_API_URL;
+  const storedToken = localStorage.getItem("authToken");
+  const { user } = useContext(AuthContext);
+  const [userDetails, setUserDetails] = useState({});
 
-      <Box width="small">
-        <DateInput
-          size="small"
-          format="dd/mm/yyyy"
-          value={new Date().toISOString()}
-          onChange={({ value }) => {}}
-        />
+  const fuse = new Fuse(workouts, { keys: ["name", "tags", "workout.move"] });
+
+  useEffect(() => {
+    axios.get(`${SW_API_URL}/api/users/${user._id}`).then((response) => {
+      setUserDetails(response.data);
+    });
+  }, []);
+
+  const handleSearchInput = (e) => {
+    setInputValue(e.target.value);
+    const fuzzyResult = fuse.search(inputValue);
+    console.log(inputValue);
+    inputValue.length == 0
+      ? setSearchResults([])
+      : setSearchResults(fuzzyResult);
+  };
+
+  useEffect(() => {
+    axios
+      .get(`${SW_API_URL}/api/wods`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setWorkouts(response.data);
+      });
+  }, []);
+
+  return (
+    <Box width="60vw">
+      <Heading>Some Workout</Heading>
+      <Box>
+        <TextInput value={inputValue} onChange={handleSearchInput}></TextInput>
       </Box>
-    </div>
+      <Box fill pad={{ top: "large" }} direction="row" wrap justify="around">
+        {searchResults.length > 0
+          ? searchResults.map((element) => {
+              return (
+                <WodCard
+                  key={element.item._id}
+                  data={element.item}
+                  userDetails={userDetails}
+                />
+              );
+            })
+          : "hello"}
+      </Box>
+    </Box>
   );
 }
 

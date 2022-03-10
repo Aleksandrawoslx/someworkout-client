@@ -14,6 +14,8 @@ import IsAnon from "./components/IsAnon";
 import CollapsableNav from "./components/Navbar/CollapsableNav";
 import { Home } from "grommet-icons";
 import AddClient from "./pages/AddClient";
+import MyWorkoutsPage from "./pages/MyWorkoutsPage";
+import AddWorkout from "./pages/AddWorkout";
 
 const theme = {
   notification: { container: { background: "brand" } },
@@ -42,7 +44,15 @@ export default function App() {
           background="light-2"
         >
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={"kjsjk"} />
+            <Route
+              path="/home"
+              element={
+                <IsPrivate>
+                  <HomePage />
+                </IsPrivate>
+              }
+            />
 
             <Route
               path="/clients"
@@ -57,8 +67,7 @@ export default function App() {
               path="/workouts"
               element={
                 <IsPrivate>
-                  {" "}
-                  <WorkoutsPage />{" "}
+                  <MyWorkoutsPage />
                 </IsPrivate>
               }
             />
@@ -68,6 +77,15 @@ export default function App() {
                 <IsPrivate>
                   {" "}
                   <AddClient />{" "}
+                </IsPrivate>
+              }
+            />
+            <Route
+              path="/addworkout"
+              element={
+                <IsPrivate>
+                  {" "}
+                  <AddWorkout />{" "}
                 </IsPrivate>
               }
             />
