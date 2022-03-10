@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Grommet, Box } from "grommet";
+import { Grommet, Box, Heading } from "grommet";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar/Navbar";
@@ -45,7 +45,7 @@ export default function App() {
           background="light-2"
         >
           <Routes>
-            <Route path="/" element={"kjsjk"} />
+            <Route path="/" element={<Heading>SomeWorkout</Heading>} />
             <Route
               path="/home"
               element={

@@ -19,7 +19,7 @@ import {
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-// const API_URL = "http://localhost:3000";
+
 const SW_API_URL = process.env.REACT_APP_API_URL;
 
 function LoginPage(props) {
