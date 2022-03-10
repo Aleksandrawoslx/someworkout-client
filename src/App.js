@@ -17,7 +17,7 @@ import { Home } from "grommet-icons";
 import AddClient from "./pages/AddClient";
 import MyWorkoutsPage from "./pages/MyWorkoutsPage";
 import AddWorkout from "./pages/AddWorkout";
-
+import Splash from "./components/Splash"
 const theme = {
   notification: { container: { background: "brand" } },
   global: {
@@ -45,7 +45,7 @@ export default function App() {
           background="light-2"
         >
           <Routes>
-            <Route path="/" element={<Heading>SomeWorkout</Heading>} />
+            <Route path="/" element={<Splash/>} />
             <Route
               path="/home"
               element={
