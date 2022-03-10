@@ -1,3 +1,5 @@
+import axios from "axios";
+import { Navigate } from "react-router-dom";
 import {
     Box,
     Button,
@@ -11,6 +13,10 @@ import {
   import React, { useState } from "react";
   
   export default function AddWorkout() {
+
+    const SW_API_URL = process.env.REACT_APP_API_URL;
+
+    
     const [values, setValues] = useState({
       name: "",
       description: "",
@@ -37,6 +43,24 @@ import {
         setValues(newFormState);
       }
     };
+
+    const handleSubmit = (data) => {
+        console.log(data)
+        
+
+        axios
+        .post(`${SW_API_URL}/api/wods`,data)
+        .then((result)=>{
+            console.log(result)
+            setValues({
+                description: "",
+                name: "", 
+                rounds: "",
+                workout: [{ move: "", reps: 0 }]
+            })
+        })
+    }
+
 
     let movesGroup = null;
   
@@ -84,6 +108,8 @@ import {
           }}
           onChange={handleFormChange}
           onSubmit={(event) => {
+
+            handleSubmit(event.value)
             console.log("Submit: ", event.value);
           }}
         >
