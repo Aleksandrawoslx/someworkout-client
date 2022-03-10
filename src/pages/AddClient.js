@@ -4,6 +4,7 @@ import {
   DateInput,
   Form,
   FormField,
+  Heading,
   RangeInput,
   TextInput,
 } from "grommet";
@@ -65,6 +66,7 @@ export default function AddClient() {
 
   return (
     <Box>
+      <Heading>Add a new client</Heading>
       <Form onSubmit={handleSubmit}>
         <FormField name="name" htmlFor="text-input-id" label="Name">
           <TextInput

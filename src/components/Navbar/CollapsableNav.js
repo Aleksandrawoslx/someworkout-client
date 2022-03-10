@@ -43,7 +43,7 @@ const CollapsableNav = () => {
         {isLoggedIn && (
           <>
             <Link className="left-menu" to="/home">
-              Home
+              Workoutsbase
             </Link>
             <Link className="left-menu" to="/workouts">
               My workouts
