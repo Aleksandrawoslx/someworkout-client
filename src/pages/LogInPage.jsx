@@ -79,6 +79,7 @@ function LoginPage(props) {
             <TextInput
               onChange={handlePassword}
               id="text-input-id"
+              type="password"
               value={password}
               name="password"
             />

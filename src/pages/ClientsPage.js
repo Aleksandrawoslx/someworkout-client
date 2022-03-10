@@ -29,12 +29,28 @@ function ClientsPage() {
         setUserDetails(response.data);
       })
       .then(() => {
-        console.log(userDetails.userClients);
-      })
-      .then(() => {
         setLoaded(true);
       });
   }, [loaded]);
+
+  const handleDelete = (e) => {
+
+    const clientToDelete = e.target.id
+
+    console.log(userDetails.userClients)
+
+    const newClients = userDetails.userClients.filter(element => {
+      return element._id !==e.target.id
+    })
+
+    setUserDetails(previous => {
+      return {...previous, userClients: newClients}
+    })
+
+    axios.put(`${SW_API_URL}/api/users/${user._id}`, userDetails)
+
+   
+  };
 
   return (
     <Box>
@@ -79,7 +95,7 @@ function ClientsPage() {
                         <FolderOpen />
                       </TableCell>
                       <TableCell scope="col" border="bottom">
-                        <Trash />
+                        <Trash id={element._id} onClick={handleDelete} />
                       </TableCell>
                     </TableRow>
                   );

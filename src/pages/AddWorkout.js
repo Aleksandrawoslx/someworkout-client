@@ -37,7 +37,7 @@ import {
         setValues(newFormState);
       }
     };
-  
+
     let movesGroup = null;
   
     if (values.workout !== undefined) {
