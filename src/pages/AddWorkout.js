@@ -11,9 +11,12 @@ import {
     TextInput,
   } from "grommet";
   import { Add, Trash } from "grommet-icons";
-  import React, { useState } from "react";
+  import React, { useState, useContext } from "react";
+  import { AuthContext } from "../context/auth.context";
   
   export default function AddWorkout() {
+
+    const {user} = useContext(AuthContext)
 
 
     const [visibleEdit, setVisibleEdit] = useState(false)
@@ -25,7 +28,8 @@ import {
       name: "",
       description: "",
       workout: [{ move: "", reps: 0 }],
-      userAdded: true
+      userAdded: true,
+      owner: ""
     });
   
     const addMove = () => {
@@ -51,6 +55,7 @@ import {
 
     const handleSubmit = (data) => {
         data.userAdded = true
+        data.owner = user._id
 
         console.log(data)
 
@@ -66,7 +71,8 @@ import {
                 name: "", 
                 rounds: "",
                 workout: [{ move: "", reps: 0 }],
-                userAdded: true
+                userAdded: true,
+                
             })
         })
     }

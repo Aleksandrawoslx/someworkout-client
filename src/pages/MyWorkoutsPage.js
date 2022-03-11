@@ -39,7 +39,7 @@ export default function MyWorkoutsPage() {
       <Box  fill pad={{ top: "large" }} direction="row" wrap justify="around">
           {
               wodArr.filter(element => {
-                  return element.userAdded === true
+                  return element.owner == user._id
               }).map(element => {
                   return (
                       <WodCard key={element._id} data={element} userDetails={userDetails} />
