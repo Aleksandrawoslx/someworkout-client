@@ -37,7 +37,6 @@ export default function AddClient() {
     setSurName(e.target.value);
   };
   const handleBirth = (e) => {
-    // console.log(e);
     setBirth(e.value);
   };
 
@@ -57,7 +56,7 @@ export default function AddClient() {
       userArr.push(clientId);
 
       axios
-        .put(`${SW_API_URL}/api/users/${user._id}`, { userClients: userArr })
+        .put(`${SW_API_URL}/api/users/${user._id}`, {userClients: userArr })
         .then((response) => {
           navigate("/clients");
         });

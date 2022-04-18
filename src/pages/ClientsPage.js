@@ -1,7 +1,6 @@
 import {
   Box,
   Heading,
-  Paragraph,
   Table,
   TableBody,
   TableCell,
@@ -12,7 +11,6 @@ import {
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-
 import axios from "axios";
 import { FolderOpen, Trash } from "grommet-icons";
 const SW_API_URL = process.env.REACT_APP_API_URL;

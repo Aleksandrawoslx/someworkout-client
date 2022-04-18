@@ -40,6 +40,9 @@ const CollapsableNav = () => {
         background="brand"
         pad="medium"
       >
+        <Box
+        pad="medium"
+        alignContent="stretch">
         {isLoggedIn && (
           <>
             <Link className="left-menu" to="/home">
@@ -49,12 +52,11 @@ const CollapsableNav = () => {
               My workouts
             </Link>
             <Link className="left-menu" to="/addworkout">
-              Make a workout 
+              Make a workout
             </Link>
             <Link className="left-menu" to="/clients">
               My Clients
             </Link>
-         
 
             {/*   UPDATE   */}
             <Button
@@ -68,7 +70,9 @@ const CollapsableNav = () => {
 
             {/* <span> {user && user.name}</span> */}
           </>
-        )}
+        )}  
+        </Box>
+       
 
         {!isLoggedIn && (
           <>

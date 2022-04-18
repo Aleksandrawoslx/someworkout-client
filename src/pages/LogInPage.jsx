@@ -19,7 +19,6 @@ import {
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-
 const SW_API_URL = process.env.REACT_APP_API_URL;
 
 function LoginPage(props) {

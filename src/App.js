@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { Grommet, Box, Heading } from "grommet";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Navbar from "./components/Navbar/Navbar";
 
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LogInPage";
 import WorkoutsPage from "./pages/WorkoutsPage";
 import ClientsPage from "./pages/ClientsPage";
-import EditClient from "./pages/EditClient"
+import EditClient from "./pages/EditClient";
 
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT
 import IsAnon from "./components/IsAnon";
@@ -17,7 +16,7 @@ import { Home } from "grommet-icons";
 import AddClient from "./pages/AddClient";
 import MyWorkoutsPage from "./pages/MyWorkoutsPage";
 import AddWorkout from "./pages/AddWorkout";
-import Splash from "./components/Splash"
+import Splash from "./components/Splash";
 const theme = {
   notification: { container: { background: "brand" } },
   global: {
@@ -45,7 +44,7 @@ export default function App() {
           background="light-2"
         >
           <Routes>
-            <Route path="/" element={<Splash/>} />
+            <Route path="/" element={<Splash />} />
             <Route
               path="/home"
               element={
@@ -81,7 +80,7 @@ export default function App() {
                 </IsPrivate>
               }
             />
-               <Route
+            <Route
               path="/clients/:clientId"
               element={
                 <IsPrivate>

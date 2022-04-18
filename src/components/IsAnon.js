@@ -18,5 +18,4 @@ function IsAnon({ children }) {
     return children;
   }
 }
-
 export default IsAnon;
